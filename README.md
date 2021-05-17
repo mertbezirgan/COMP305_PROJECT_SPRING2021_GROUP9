@@ -16,7 +16,10 @@ The Lempel-Ziv–Welch (LZW) is a data compression algorithm, which is the basis
 The project is written with Python3 and uses a virtual environment for dependency handling.
 
 *Create env* `python3 -m venv env`
+
 *Active* `source env/bin/activate`
+
 *Deactivate* `deactivate`
+
 *Install dependencies (while env is active)* `python3 -m pip install -r requirements.txt`
 
