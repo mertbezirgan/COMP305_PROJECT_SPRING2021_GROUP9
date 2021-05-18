@@ -18,18 +18,18 @@ def encode(file_name):
     #generate dictionary by initializing it first to ascii
     encoding_dict = {chr(i) : i for i in range(256)}
 
-    P = string_to_compress[curr]
+    p = string_to_compress[curr]
     
     while curr < (length - 1):
         curr += 1
-        C = string_to_compress[curr]
-        if P + C in encoding_dict:
-            P = P + C
+        c = string_to_compress[curr]
+        if p + c in encoding_dict:
+            p = p + c
         else:
-            compressed_string += (str(encoding_dict[P]) + " ")
-            encoding_dict[P + C] = dict_num + 1
+            compressed_string += (str(encoding_dict[p]) + " ")
+            encoding_dict[p + c] = dict_num + 1
             dict_num += 1
-            P = C
+            p = c
     compressed_string = compressed_string[:-1]
     output = open(output_name, "w")
     output.write(compressed_string)
