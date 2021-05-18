@@ -1,6 +1,6 @@
 # Recursive LZW Algorithm
 
-COMP 305 Project for Spring 2021 of Group 7
+COMP 305 Project for Spring 2021 of Group 9
 
 **Authors:**
 
