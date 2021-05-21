@@ -1,8 +1,7 @@
 
 # This function encodes the file
-def encode(file_name):
+def encode(file_name, output_name):
     encoding_dict = {}
-    output_name = file_name.split(".")[0] + "_encoded" + ".txt"
     string_to_compress = ""
     compressed_string = ""
     curr = 0
