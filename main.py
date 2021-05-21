@@ -19,10 +19,6 @@ if __name__ == "__main__":
         # Operation successful
             print("Encryption " + str(x+1) + " successful")
 
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    file_name = dir_path + file
-    output_name = dir_path + file + "_decoded"
-
     for x in range(int(count)):
         result = decode("test-data/" + file + ".txt", "test-data/" + file + "_d.txt")
         file += "_d"
