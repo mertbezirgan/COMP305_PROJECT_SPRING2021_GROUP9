@@ -18,6 +18,15 @@ def encode(file_name):
     #generate dictionary by initializing it first to ascii
     encoding_dict = {chr(i) : i for i in range(256)}
 
+    commonWords = []
+    with open("./mostCommonWords.txt", encoding="utf-8") as file:
+        commonWords = file.readlines()
+    for l in commonWords:
+        encoding_dict[l[:-1]] = dict_num + 1
+        dict_num += 1
+    print(commonWords)
+    print(encoding_dict)
+
     p = string_to_compress[curr]
     
     while curr < (length - 1):
