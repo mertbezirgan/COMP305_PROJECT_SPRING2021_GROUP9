@@ -1,5 +1,4 @@
 from baseChange import b64_2_b10
-
 # This function decodes the file
 def decode(file_name, output_file_name, code_type = "base10", bit_size = 256):
     print("Inside decode")

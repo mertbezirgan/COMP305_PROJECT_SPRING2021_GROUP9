@@ -1,5 +1,4 @@
 from baseChange import b10_2_b64
-
 # This function encodes the file
 def encode(file_name):
     encoding_dict = {}
