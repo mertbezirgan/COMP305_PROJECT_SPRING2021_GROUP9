@@ -1,12 +1,12 @@
 import os
 import timeit
-from encode_base2 import encode
-from decode_base2 import decode
+from encode_base32 import encode
+from decode_base32 import decode
 
 start = timeit.default_timer()
 
-test_file_name = "/test-data/alice29_encodedBase2.txt"
-test_file_output_name = "/resBase2.txt"
+test_file_name = "/test-data/alice29_encodedBase32.txt"
+test_file_output_name = "/resBase32.txt"
 test_bit_size = 8
 
 if __name__ == "__main__":

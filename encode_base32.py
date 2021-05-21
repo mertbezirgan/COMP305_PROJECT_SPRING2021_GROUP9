@@ -1,8 +1,8 @@
-
+from baseChange import b10_2_b32
 # This function encodes the file
 def encode(file_name):
     encoding_dict = {}
-    output_name = file_name.split(".")[0] + "_encodedBase2" + ".txt"
+    output_name = file_name.split(".")[0] + "_encodedBase32" + ".txt"
     string_to_compress = ""
     compressed_string = ""
     curr = 0
@@ -26,7 +26,7 @@ def encode(file_name):
         if p + c in encoding_dict:
             p = p + c
         else:
-            compressed_string += (str(format(encoding_dict[p], 'b')) + " ")
+            compressed_string += (str(b10_2_b32(encoding_dict[p])) + " ")
             encoding_dict[p + c] = dict_num + 1
             dict_num += 1
             p = c

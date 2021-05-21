@@ -1,4 +1,4 @@
-
+from baseChange import b32_2_b10
 # This function decodes the file
 def decode(file_name, output_file_name, code_type = "base10", bit_size = 256):
     print("Inside decode")
@@ -14,7 +14,7 @@ def decode(file_name, output_file_name, code_type = "base10", bit_size = 256):
         decoded_data = ""
 
         # Put every code in array by spliting space char
-        code_arr = [int(i, base=2) for i in compressed_data.split(" ")]
+        code_arr = [b32_2_b10(i) for i in compressed_data.split(" ")]
         if len(code_arr) == 0:
             # No data in the file was found
             return -1
