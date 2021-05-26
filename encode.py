@@ -1,12 +1,10 @@
+from baseChange import b10_2_b32, b10_2_b64
+
 
 # This function encodes the file
-def encode(file_name):
-    encoding_dict = {}
-    output_name = file_name.split(".")[0] + "_encoded" + ".txt"
-    string_to_compress = ""
+def encode(file_name, output_name, base_value):
     compressed_string = ""
     curr = 0
-    length = 0
     dict_num = 255
 
     #read the text that is going to be compressed
@@ -14,18 +12,18 @@ def encode(file_name):
         string_to_compress = file.read()
 
     length = len(string_to_compress)
+    if length == 0:
+        return -1
 
     #generate dictionary by initializing it first to ascii
     encoding_dict = {chr(i) : i for i in range(256)}
 
-    commonWords = []
+    common_words = []
     with open("./mostCommonWords.txt", encoding="utf-8") as file:
-        commonWords = file.readlines()
-    for l in commonWords:
+        common_words = file.readlines()
+    for l in common_words:
         encoding_dict[l[:-1]] = dict_num + 1
         dict_num += 1
-    print(commonWords)
-    print(encoding_dict)
 
     p = string_to_compress[curr]
     
@@ -35,12 +33,22 @@ def encode(file_name):
         if p + c in encoding_dict:
             p = p + c
         else:
-            compressed_string += (str(encoding_dict[p]) + " ")
+            # Encode based on the base_value
+            if base_value == 10:
+                compressed_string += (str(encoding_dict[p]) + " ")
+            elif base_value == 16:
+                compressed_string += (str(format(encoding_dict[p], 'x')) + " ")
+            elif base_value == 32:
+                compressed_string += (str(b10_2_b32(encoding_dict[p])) + " ")
+            elif base_value == 64:
+                compressed_string += (str(b10_2_b64(encoding_dict[p])) + " ")
+
             encoding_dict[p + c] = dict_num + 1
             dict_num += 1
             p = c
+    
     compressed_string = compressed_string[:-1]
-    output = open(output_name, "w")
-    output.write(compressed_string)
-    output.close()
+    with open(output_name, "w", encoding="utf-8") as output:
+        output.write(compressed_string)
+
     return 1
