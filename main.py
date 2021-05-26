@@ -1,32 +1,70 @@
-import os
 import timeit
+import sys
+import getopt
 from encode import encode
 from decode import decode
 
-start = timeit.default_timer()
-
-test_file_name = "/compressed-test-data/default-compressed.txt"
-test_file_output_name = "/res.txt"
-test_bit_size = 8
 
 if __name__ == "__main__":
-    print("Running file")
-    encode("test-data/alice29.txt")
+    # Handle passed arguments
+    # <method> <input_file_name> <output_file_name> <base_value> <recursive>
+    arg_dict = {
+        # Initiliaze with default values
+        "base_value": 10,
+        "recursive": False
+    }
+    argumentList = sys.argv[1:]
+    # Options
+    options = "b:r"
+    # Long options
+    long_options = ["base =", "recursive"]
+    try:
+        # Parsing argument
+        arguments, values = getopt.getopt(argumentList, options, long_options)
+        
+        # Checking each argument with options
+        for currentArgument, currentValue in arguments:
     
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    file_name = dir_path + test_file_name
-    output_file_name = dir_path + test_file_output_name
+            if currentArgument in ("-b", "--base"):
+                arg_dict["base_value"] = int(currentValue)
+            elif currentArgument in ("-r", "--recursive"):
+                arg_dict["recursive"] = True
 
-    result = decode(file_name, output_file_name)
+        # Check rest of the arguments
+        if len(values) < 3:
+            raise getopt.error("Required arguments were not given correctly")
+        arg_dict["method"] = values[0]
+        arg_dict["input_file_name"] = values[1]
+        arg_dict["output_file_name"] = values[2]
 
-    # Print result
-    if result == -1:
-        # Operation failed
-        print("Failed operation")
-    else:
-        # Operation successful
-        print("Operation successful")
+        # Call method with arguments passed as parameters
+        if arg_dict["method"] == "encode":
+            result = encode(
+                file_name=arg_dict["input_file_name"],
+                output_name=arg_dict["output_file_name"],
+                base_value=arg_dict["base_value"]
+            )
+        elif arg_dict["method"] == "decode":
+            result = decode(
+                file_name=arg_dict["input_file_name"],
+                output_file_name=arg_dict["output_file_name"],
+                base_value=arg_dict["base_value"]
+            )
+        else:
+            # Invalid method was given
+            raise getopt.error("Invalid method was given, enter 'encode' or 'decode' in the arguments")
+        
+        if result == -1:
+            # Operation failed
+            raise Exception()
+        else:
+            # Operation successful
+            print("Operation successful")
 
-stop = timeit.default_timer()
-
-print('Time: ', stop - start) 
+    # Output error, and return
+    except getopt.error as err:
+        print(str(err))
+    except Exception as err:
+        print(str(err))
+        print("An error has occurred")
+        
