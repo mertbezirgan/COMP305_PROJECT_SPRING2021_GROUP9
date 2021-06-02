@@ -1,4 +1,4 @@
-from baseChange import b10_2_b32, b10_2_b64
+from baseChange import b10_2_b32, b10_2_b64, b10_2_b128, b10_2_b256
 
 
 # This function encodes the file
@@ -55,6 +55,10 @@ def encode(file_name, output_name, encoding, base_value):
                 compressed_string += (str(b10_2_b32(encoding_dict[p])) + " ")
             elif base_value == 64:
                 compressed_string += (str(b10_2_b64(encoding_dict[p])) + " ")
+            elif base_value == 128:
+                compressed_string += (str(b10_2_b128(encoding_dict[p])) + " ")
+            elif base_value == 256:
+                compressed_string += (str(b10_2_b256(encoding_dict[p])) + " ")
 
             encoding_dict[p + c] = dict_num + 1
             dict_num += 1
