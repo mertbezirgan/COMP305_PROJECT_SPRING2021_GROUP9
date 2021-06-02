@@ -25,6 +25,6 @@ The project is written with Python3 and uses a virtual environment for dependenc
 
 ## Run program
 
-`python3 main.py -b 32 encode test-data/alice29.txt res2.txt`
+`python main.py -r 2 -b 64 encode ./test-data/sample.txt utf-8 ./compressed-test-data/sample_e.txt`
 
-`python3 main.py -b 32 decode res2.txt res3.txt`
+`python main.py -r 2 -b 64 decode ./compressed-test-data/sample_e.txt utf-8 ./compressed-test-data/sample_d.txt`
