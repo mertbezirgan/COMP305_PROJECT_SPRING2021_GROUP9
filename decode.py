@@ -2,9 +2,13 @@ from baseChange import b32_2_b10, b64_2_b10
 
 
 # This function decodes the file
-def decode(file_name, output_file_name, encoding, base_value, bit_size = 65535):
+def decode(file_name, output_file_name, encoding, base_value):
     # This variable holds main dict used for decoding
     code_dict = {}
+    if encoding == "utf-8":
+        bit_size = 256
+    else:
+        bit_size = 65535
 
     # Read file to decode
     with open(file_name, 'r', encoding=encoding) as f:
@@ -43,7 +47,7 @@ def decode(file_name, output_file_name, encoding, base_value, bit_size = 65535):
         decoded_data = code_dict[prev]
         hold = code_dict[prev]
         count = bit_size + len(common_words)
-
+        # print(decoded_data)
         for code in code_arr:
             if code in code_dict:
                 # Code is in dict
@@ -52,6 +56,7 @@ def decode(file_name, output_file_name, encoding, base_value, bit_size = 65535):
             else:
                 # Code is not in dict
                 decoded_data += code_dict[prev] + hold
+                # print(decoded_data)
                 hold = code_dict[prev][0]
 
             code_dict[count] = code_dict[prev] + hold
