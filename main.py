@@ -11,13 +11,13 @@ if __name__ == "__main__":
     arg_dict = {
         # Initiliaze with default values
         "base_value": 10,
-        "recursive": False,
+        "recursive": 1,
     }
     argumentList = sys.argv[1:]
     # Options
-    options = "b:r"
+    options = "b:r:"
     # Long options
-    long_options = ["base =", "recursive"]
+    long_options = ["base =", "recursive ="]
     try:
         # Parsing argument
         arguments, values = getopt.getopt(argumentList, options, long_options)
@@ -28,7 +28,7 @@ if __name__ == "__main__":
             if currentArgument in ("-b", "--base"):
                 arg_dict["base_value"] = int(currentValue)
             elif currentArgument in ("-r", "--recursive"):
-                arg_dict["recursive"] = True
+                arg_dict["recursive"] = int(currentValue)
 
         # Check rest of the arguments
         if len(values) < 4:
@@ -46,7 +46,28 @@ if __name__ == "__main__":
                 encoding=arg_dict["encoding"],
                 base_value=arg_dict["base_value"]
             )
-        elif arg_dict["method"] == "decode":
+            for i in range(arg_dict["recursive"] - 1):
+                result = encode(
+                    file_name=arg_dict["output_file_name"],
+                    output_name=arg_dict["output_file_name"],
+                    encoding=arg_dict["encoding"],
+                    base_value=arg_dict["base_value"],
+                    recursive=True
+                )
+                if result == -1:
+                    raise Exception()
+    
+        elif arg_dict["method"] == "decode":        
+            for i in range(arg_dict["recursive"] - 1):
+                result = decode(
+                    file_name=arg_dict["input_file_name"],
+                    output_file_name=arg_dict["input_file_name"],
+                    encoding=arg_dict["encoding"],
+                    base_value=arg_dict["base_value"],
+                    recursive=True
+                )
+                if result == -1:
+                    raise Exception()
             result = decode(
                 file_name=arg_dict["input_file_name"],
                 output_file_name=arg_dict["output_file_name"],
