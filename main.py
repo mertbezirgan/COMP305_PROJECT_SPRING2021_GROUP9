@@ -6,6 +6,7 @@ from decode import decode
 
 
 if __name__ == "__main__":
+    start = timeit.default_timer()
     # Handle passed arguments
     # <method> <input_file_name> <encoding> <output_file_name> <base_value> <recursive>
     arg_dict = {
@@ -63,6 +64,10 @@ if __name__ == "__main__":
         else:
             # Operation successful
             print("Operation successful")
+    
+        stop = timeit.default_timer()
+
+        print('Time: ', stop - start) 
 
     # Output error, and return
     except getopt.error as err:
