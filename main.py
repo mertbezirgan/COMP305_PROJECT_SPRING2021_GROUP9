@@ -51,8 +51,7 @@ if __name__ == "__main__":
                     file_name=arg_dict["output_file_name"],
                     output_name=arg_dict["output_file_name"],
                     encoding=arg_dict["encoding"],
-                    base_value=arg_dict["base_value"],
-                    recursive=True
+                    base_value=arg_dict["base_value"]
                 )
                 if result == -1:
                     raise Exception()
@@ -63,8 +62,7 @@ if __name__ == "__main__":
                     file_name=arg_dict["input_file_name"],
                     output_file_name=arg_dict["input_file_name"],
                     encoding=arg_dict["encoding"],
-                    base_value=arg_dict["base_value"],
-                    recursive=True
+                    base_value=arg_dict["base_value"]
                 )
                 if result == -1:
                     raise Exception()
