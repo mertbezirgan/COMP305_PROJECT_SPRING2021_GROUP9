@@ -12,7 +12,6 @@ if __name__ == "__main__":
         # Initiliaze with default values
         "base_value": 10,
         "recursive": False,
-        "encoding": "utf-8",
     }
     argumentList = sys.argv[1:]
     # Options
@@ -47,24 +46,6 @@ if __name__ == "__main__":
                 encoding=arg_dict["encoding"],
                 base_value=arg_dict["base_value"]
             )
-            # result = encode(
-            #     file_name=arg_dict["output_file_name"],
-            #     output_name=arg_dict["output_file_name"],
-            #     encoding=arg_dict["encoding"],
-            #     base_value=arg_dict["base_value"]
-            # )
-            # result = encode(
-            #     file_name=arg_dict["output_file_name"],
-            #     output_name=arg_dict["output_file_name"],
-            #     encoding=arg_dict["encoding"],
-            #     base_value=arg_dict["base_value"]
-            # )
-            # result = encode(
-            #     file_name=arg_dict["output_file_name"],
-            #     output_name=arg_dict["output_file_name"],
-            #     encoding=arg_dict["encoding"],
-            #     base_value=arg_dict["base_value"]
-            # )
         elif arg_dict["method"] == "decode":
             result = decode(
                 file_name=arg_dict["input_file_name"],
@@ -72,24 +53,6 @@ if __name__ == "__main__":
                 encoding=arg_dict["encoding"],
                 base_value=arg_dict["base_value"]
             )
-            # result = decode(
-            #     file_name=arg_dict["output_file_name"],
-            #     output_file_name=arg_dict["output_file_name"],
-            #     encoding=arg_dict["encoding"],
-            #     base_value=arg_dict["base_value"]
-            # )
-            # result = decode(
-            #     file_name=arg_dict["output_file_name"],
-            #     output_file_name=arg_dict["output_file_name"],
-            #     encoding=arg_dict["encoding"],
-            #     base_value=arg_dict["base_value"]
-            # )
-            # result = decode(
-            #     file_name=arg_dict["output_file_name"],
-            #     output_file_name=arg_dict["output_file_name"],
-            #     encoding=arg_dict["encoding"],
-            #     base_value=arg_dict["base_value"]
-            # )
         else:
             # Invalid method was given
             raise getopt.error("Invalid method was given, enter 'encode' or 'decode' in the arguments")
