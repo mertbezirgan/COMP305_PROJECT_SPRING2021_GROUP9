@@ -61,7 +61,7 @@ def b128_2_b10(xx):
         r = repr.index(xx[0])
         xx = xx[1:]
         num = num * base
-        num = num + ré
+        num = num + r
     return num
 
 def b10_2_b256(num):
