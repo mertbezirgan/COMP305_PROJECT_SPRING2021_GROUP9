@@ -2,12 +2,12 @@ from baseChange import b32_2_b10, b64_2_b10
 
 
 # This function decodes the file
-def decode(file_name, output_file_name, base_value, bit_size = 256):
+def decode(file_name, output_file_name, encoding, base_value, bit_size = 65535):
     # This variable holds main dict used for decoding
     code_dict = {}
 
     # Read file to decode
-    with open(file_name, 'r', encoding="utf-8") as f:
+    with open(file_name, 'r', encoding=encoding) as f:
         # Read every line at once
         compressed_data = f.read()
 
@@ -59,7 +59,7 @@ def decode(file_name, output_file_name, base_value, bit_size = 256):
             prev = code
 
         # Write decoded data to output file
-        with open(output_file_name, "w", encoding="utf-8") as o:
+        with open(output_file_name, "w", encoding=encoding) as o:
             o.write(decoded_data)            
 
     return 1

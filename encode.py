@@ -2,13 +2,13 @@ from baseChange import b10_2_b32, b10_2_b64
 
 
 # This function encodes the file
-def encode(file_name, output_name, base_value):
+def encode(file_name, output_name, encoding, base_value):
     compressed_string = ""
     curr = 0
-    dict_num = 255
+    dict_num = 65534
 
     #read the text that is going to be compressed
-    with open(file_name, encoding="utf-8") as file:
+    with open(file_name, encoding=encoding) as file:
         string_to_compress = file.read()
 
     length = len(string_to_compress)
@@ -16,7 +16,7 @@ def encode(file_name, output_name, base_value):
         return -1
 
     #generate dictionary by initializing it first to ascii
-    encoding_dict = {chr(i) : i for i in range(256)}
+    encoding_dict = {chr(i) : i for i in range(65535)}
 
     common_words = []
     with open("./mostCommonWords.txt", encoding="utf-8") as file:
@@ -48,7 +48,7 @@ def encode(file_name, output_name, base_value):
             p = c
     
     compressed_string = compressed_string[:-1]
-    with open(output_name, "w", encoding="utf-8") as output:
+    with open(output_name, "w", encoding=encoding) as output:
         output.write(compressed_string)
 
     return 1
