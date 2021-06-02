@@ -1,4 +1,4 @@
-from baseChange import b32_2_b10, b64_2_b10
+from baseChange import b32_2_b10, b64_2_b10, b128_2_b10, b256_2_b10
 
 
 # This function decodes the file
@@ -22,6 +22,10 @@ def decode(file_name, output_file_name, encoding, base_value, bit_size = 65535):
             code_arr = [b32_2_b10(i) for i in compressed_data.split(" ")]
         elif base_value == 64:
             code_arr = [b64_2_b10(i) for i in compressed_data.split(" ")]
+        elif base_value == 128:
+            code_arr = [b128_2_b10(i) for i in compressed_data.split(" ")]
+        elif base_value == 256:
+            code_arr = [b256_2_b10(i) for i in compressed_data.split(" ")]
         else:
             return -1
             
