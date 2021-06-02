@@ -45,6 +45,10 @@ def encode(file_name, output_name, encoding, base_value):
                     compressed_string += (str(b10_2_b32(encoding_dict[p])) + " ")
                 elif base_value == 64:
                     compressed_string += (str(b10_2_b64(encoding_dict[p])) + " ")
+                elif base_value == 128:
+                    compressed_string += (str(b10_2_b128(encoding_dict[p])) + " ")
+                elif base_value == 256:
+                    compressed_string += (str(b10_2_b256(encoding_dict[p])) + " ")
         else:
             # Encode based on the base_value
             if base_value == 10:
@@ -72,6 +76,10 @@ def encode(file_name, output_name, encoding, base_value):
                     compressed_string += (str(b10_2_b32(encoding_dict[c])) + " ")
                 elif base_value == 64:
                     compressed_string += (str(b10_2_b64(encoding_dict[c])) + " ")
+                elif base_value == 128:
+                    compressed_string += (str(b10_2_b128(encoding_dict[p])) + " ")
+                elif base_value == 256:
+                    compressed_string += (str(b10_2_b256(encoding_dict[p])) + " ")
 
     
     
