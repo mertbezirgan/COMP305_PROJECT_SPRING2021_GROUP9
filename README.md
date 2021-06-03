@@ -23,6 +23,10 @@ The Lempel-Ziv–Welch (LZW) is a data compression algorithm, which is the basis
 - Upgrade recursive algortihm.
 - Run algorithm to collect data from test cases.
 
+## Links
+
+- Results table: https://docs.google.com/spreadsheets/d/1-J8uDIaoJn6ZsXTF5Q2IDAr1EU148GnI-4tVnIP4wxM/edit?usp=sharing
+
 ## Environment setup
 
 The project is written with Python3 and uses a virtual environment for dependency handling.
